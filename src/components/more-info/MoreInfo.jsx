@@ -1,4 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+
+import './MoreInfo.scss';
 
 class MoreInfo extends React.Component {
   constructor() {
@@ -12,7 +15,7 @@ class MoreInfo extends React.Component {
         className="moreinfo"
         type="button"
       >
-        More Information
+        <Link to="/details"> More Information</Link>
       </button>
     );
   }
