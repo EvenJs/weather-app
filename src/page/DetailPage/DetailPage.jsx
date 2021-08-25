@@ -1,8 +1,8 @@
 import React from 'react';
 
-import Time from '../../components/Time/Time';
+import Time from '../../components/Time';
 import GoBack from '../../components/GoBack/GoBack';
-import DarkModeSwitch from '../../components/DarkMode/DarkModeSwitch';
+import DarkModeSwitch from '../../components/DarkMode';
 import WeatherBlock from '../../components/WeatherBlock';
 import WeatherIcon from '../../components/WeatherIcon';
 
@@ -15,7 +15,7 @@ const DetailPage = () => (
       <DarkModeSwitch />
     </div>
     <Time />
-    <WeatherIcon url="../../asset/sunny.png" />
+    <WeatherIcon url="http://openweathermap.org/img/wn/10d@2x.png" />
     <WeatherBlock type="temperature" value="14" />
   </div>
 );
