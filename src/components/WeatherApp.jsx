@@ -1,10 +1,8 @@
 import React from 'react';
+import { Switch, Route } from 'react-router';
 
-import SearchBar from './search-bar/SearchBar';
-import Time from './time/Time';
-import Weather from './weather/Weather';
-import MoreInfo from './more-info/MoreInfo';
-import SevenDays from './next-seven-days/SevenDays';
+import MainPage from '../page/MainPage/MainPage';
+import DetailPage from '../page/DetailPage/DetailPage';
 
 import './WeatherApp.styles.scss';
 
@@ -24,12 +22,11 @@ class WeatherApp extends React.Component {
 
   render() {
     return (
-      <div className="weatherApp">
-        <SearchBar />
-        <Time />
-        <Weather />
-        <MoreInfo />
-        <SevenDays />
+      <div className="weatherapp">
+        <Switch>
+          <Route exact path="/" component={MainPage} />
+          <Route path="/details" component={DetailPage} />
+        </Switch>
       </div>
     );
   }

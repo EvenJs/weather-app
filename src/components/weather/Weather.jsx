@@ -2,24 +2,44 @@ import React from 'react';
 
 import './Weather.styles.scss';
 
+const Weather = ({ tempreature, imageUrl }) => (
+  <div className="weather">
+    <div
+      className="weather-picture"
+      style={{ backgroundImage: `url('${imageUrl}')` }}
+    />
+    <div className="temprature">
+      { tempreature }
+    </div>
+  </div>
+);
+
+/*
+
 class Weather extends React.Component {
   constructor() {
     super();
-    this.state = {};
+    this.state = {
+      weather: { imgUrl: '../../asset/sunny.png' },
+      tempreature: 123,
+    };
   }
 
   render() {
-    const { tempreature } = this.state;
+    const { weather, tempreature } = this.state;
     return (
       <div className="weather">
-        <div className="weather-picture" />
+        <div
+          className="weather-picture"
+          style={{ backgroundImage: `url('${weather.imgUrl}')` }}
+        />
         <div className="temprature">
           { tempreature }
-          14
         </div>
       </div>
     );
   }
 }
+*/
 
 export default Weather;
