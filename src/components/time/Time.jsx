@@ -21,18 +21,11 @@ class Time extends React.Component {
 
   render() {
     const { time } = this.state;
-    const options = {
-      weekday: 'long',
-      year: 'numeric',
-      month: 'short',
-      day: 'numeric',
-      hour: '2-digit',
-      minute: '2-digit',
-    };
+
     return (
-      <div>
-        <span>
-          { time.toLocaleTimeString('en-us', options) }
+      <div className="time-wrapper">
+        <span className="time">
+          { time.toLocaleTimeString() }
           {this.getTime()}
         </span>
       </div>

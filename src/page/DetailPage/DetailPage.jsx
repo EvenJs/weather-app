@@ -2,21 +2,25 @@ import React from 'react';
 
 import Time from '../../components/Time';
 import GoBack from '../../components/GoBack/GoBack';
+import Location from '../../components/Location';
 import DarkModeSwitch from '../../components/DarkMode';
-import WeatherBlock from '../../components/WeatherBlock';
-import WeatherIcon from '../../components/WeatherIcon';
+import Detail from '../../components/Detail';
+import HourList from '../../components/HourList';
 
 import './DetailPage.styles.scss';
 
 const DetailPage = () => (
-  <div>
+  <div className="detail-page">
     <div className="detail-page-header">
       <GoBack />
+      <Location location="Sydney" />
       <DarkModeSwitch />
     </div>
-    <Time />
-    <WeatherIcon url="http://openweathermap.org/img/wn/10d@2x.png" />
-    <WeatherBlock type="temperature" value="14" />
+    <div className="detail-page-body">
+      <Time />
+      <Detail />
+      <HourList />
+    </div>
   </div>
 );
 

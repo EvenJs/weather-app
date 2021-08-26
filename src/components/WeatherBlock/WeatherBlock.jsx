@@ -1,5 +1,7 @@
 import React from 'react';
 
+import './WeatherBlock.styles.scss';
+
 const getTitle = (type) => ({
   temperature: 'Temperature',
   humidity: 'Humidity',
@@ -18,9 +20,9 @@ const WeatherBlock = ({
   type,
   value,
 }) => (
-  <div>
-    <h3>{getTitle(type)}</h3>
-    <div>{`${value} ${getPrefix(type)}`}</div>
+  <div className="weatherblock">
+    <h3 className="block-header">{getTitle(type)}</h3>
+    <div className="block-value">{`${value} ${getPrefix(type)}`}</div>
   </div>
 );
 

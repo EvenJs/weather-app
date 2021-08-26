@@ -1,0 +1,15 @@
+.weatherblock {
+  border: solid 1px red;
+  height: 140px;
+  width: 140px;
+  display: flex;
+  flex-direction: column;
+
+  .block-header {
+    text-align: center;
+  }
+
+  .block-value {
+    text-align: center;
+  }
+}
