@@ -1,7 +1,16 @@
 .main-page {
   position: relative;
 
+
   &-header {
     display: flex;
+    margin: 1% 2%;
+  }
+
+  &-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
   }
 }

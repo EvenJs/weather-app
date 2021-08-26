@@ -3,8 +3,8 @@ import React from 'react';
 import SearchBar from '../../components/SearchBar';
 import DarkModeSwitch from '../../components/DarkMode';
 import Location from '../../components/Location';
-import Time from '../../components/Time';
-import Weather from '../../components/Weather/Weather';
+import DisplayDate from '../../components/DisplayDate';
+import WeatherIcon from '../../components/WeatherIcon';
 import MoreInfo from '../../components/MoreInfo';
 import SevenDays from '../../components/NextSevenDays';
 
@@ -15,25 +15,30 @@ class MainPage extends React.Component {
     super();
 
     this.state = {
-      tempreature: 123,
-      imageUrl: 'http://openweathermap.org/img/wn/10d@2x.png',
+      type: ['sunny'],
+      imageUrl: 'https://image.flaticon.com/icons/png/512/1146/1146869.png',
       location: 'Sydney',
+      temprature: '22',
     };
   }
 
   render() {
-    const { tempreature, imageUrl, location } = this.state;
+    const {
+      type, imageUrl, location, temprature,
+    } = this.state;
     return (
       <div className="main-page">
         <div className="main-page-header">
           <SearchBar />
           <DarkModeSwitch />
         </div>
-        <Location location={location} />
-        <Time />
-        <Weather imageUrl={imageUrl} tempreature={tempreature} />
-        <MoreInfo />
-        <SevenDays />
+        <div className="main-page-body">
+          <Location location={location} />
+          <DisplayDate />
+          <WeatherIcon url={imageUrl} type={type} temprature={temprature} />
+          <MoreInfo />
+          <SevenDays />
+        </div>
       </div>
     );
   }

@@ -1,0 +1,22 @@
+.location {
+  display: flex;
+  margin-top: 10%;
+  margin-left: 3%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  .location-icon {
+    width: 27px;
+    height: 27px;
+
+  }
+
+  .location-city {
+    margin-left: 2%;
+    font-family:'Rampart One', cursive;
+    font-size: 30px;
+    font-weight: bolder;
+    color: rgb(49, 160, 235);
+  }
+}

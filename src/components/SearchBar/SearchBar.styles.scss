@@ -1,21 +1,20 @@
 .search-bar{
   .search-form{
-
-
     .search-input {
       padding-left: 15px;
-      width: 170px;
-
+      width: 200px;
       border: none;
-      background-color: blanchedalmond;
-      font-size: large;
+      background-color: #68e297;
+      font-size: 20px;
+      font-family: Arial, Helvetica, sans-serif;
     }
 
     .search-button {
       font-weight: bolder;
-      font-size: large;
+      font-size: 20px;
       border: none;
-
+      background-color: #68e297;
+      cursor: pointer;
     }
   }
 }

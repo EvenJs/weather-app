@@ -22,7 +22,7 @@ class WeatherApp extends React.Component {
 
   render() {
     return (
-      <div className="weatherapp">
+      <div className="weather-app">
         <Switch>
           <Route exact path="/" component={MainPage} />
           <Route path="/details" component={DetailPage} />
