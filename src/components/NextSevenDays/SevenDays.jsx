@@ -3,25 +3,49 @@ import React from 'react';
 import EachDay from '../EachDay';
 import './SevenDays.styles.scss';
 
-class SevenDays extends React.Component {
-  constructor() {
-    super();
-    this.state = '';
-  }
+const SevenDays = ({ input }) => {
+  const { temperature, url, week } = input;
+  console.log(111, input);
+  console.log(222, week);
+  return (
+    <EachDay week={week} url={url} temperature={temperature} />
+  );
+};
 
-  render() {
-    return (
-      <div className="next-seven-days">
-        <EachDay week="Wed" url="https://image.flaticon.com/icons/png/512/1146/1146869.png" temprature="22" />
-        <EachDay week="Wed" url="https://image.flaticon.com/icons/png/512/1146/1146869.png" temprature="22" />
-        <EachDay week="Wed" url="https://image.flaticon.com/icons/png/512/1146/1146869.png" temprature="22" />
-        <EachDay week="Wed" url="https://image.flaticon.com/icons/png/512/1146/1146869.png" temprature="22" />
-        <EachDay week="Wed" url="https://image.flaticon.com/icons/png/512/1146/1146869.png" temprature="22" />
-        <EachDay week="Wed" url="https://image.flaticon.com/icons/png/512/1146/1146869.png" temprature="22" />
-        <EachDay week="Wed" url="https://image.flaticon.com/icons/png/512/1146/1146869.png" temprature="22" />
-      </div>
-    );
-  }
-}
+/*
+    const SevenDays = ({sevenDaysData}) => (
+      sevenDaysData.map((data) => {
+        const { week, url, temp } = data;
+
+        return (
+          <EachDay week={week} ... />
+        )
+      })
+    )
+
+    <WeatherApp /> -> call APIs :
+    const { current, feature24Hours, forecast } = API.response.data;
+      1. current
+      2. feature24Hours
+      3. forecast
+
+    <Current current={current} />
+
+    const reducer =  => return 状态 //状态
+    const action = => return cbFn(状态) // 修改状态的方法
+    redux-saga
+
+    父组件X() {
+      组件A(状态+修改方法) {
+        reducer => 状态
+      }
+
+      组件B() {
+        action({}) 运行修改状态
+      }
+    }
+
+    Class组件 VS Function组件
+  */
 
 export default SevenDays;

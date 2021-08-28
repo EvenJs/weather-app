@@ -11,33 +11,69 @@ import SevenDays from '../../components/NextSevenDays';
 import './MainPage.styles.scss';
 
 class MainPage extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
       type: ['sunny'],
       imageUrl: 'https://image.flaticon.com/icons/png/512/1146/1146869.png',
       location: 'Sydney',
       temprature: '22',
+      searchField: '',
+      sevenDaysData: {
+        week: 'Wed',
+        url: 'https://image.flaticon.com/icons/png/512/1146/1146869.png',
+        temperature: '22',
+      },
     };
+
+    this.handleSeachFieldChange = this.handleSeachFieldChange.bind(this);
+    this.handleSubmitClick = this.handleSubmitClick.bind(this);
+  }
+
+  handleSeachFieldChange(event) {
+    const { value } = event.target;
+
+    this.setState((prevState) => (
+      {
+        ...prevState,
+        searchField: value,
+      }
+    ));
+    // console.log(1 {location});
+  }
+
+  handleSubmitClick(event) {
+    event.preventDefault();
+
+    this.setState((prevState) => ({
+      ...prevState,
+      location: prevState.searchField,
+    }));
   }
 
   render() {
     const {
-      type, imageUrl, location, temprature,
+      type, imageUrl, location, temprature, searchField, sevenDaysData,
     } = this.state;
+    const { onDetailClick } = this.props;
+
     return (
       <div className="main-page">
         <div className="main-page-header">
-          <SearchBar />
+          <SearchBar
+            searchField={searchField}
+            handleSeachFieldChange={this.handleSeachFieldChange}
+            handleSubmitClick={this.handleSubmitClick}
+          />
           <DarkModeSwitch />
         </div>
         <div className="main-page-body">
           <Location location={location} />
           <DisplayDate />
           <WeatherIcon url={imageUrl} type={type} temprature={temprature} />
-          <MoreInfo />
-          <SevenDays />
+          <MoreInfo onDetailClick={onDetailClick} />
+          <SevenDays input={sevenDaysData} />
         </div>
       </div>
     );

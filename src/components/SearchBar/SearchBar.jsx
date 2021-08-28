@@ -2,38 +2,29 @@ import React from 'react';
 
 import './SearchBar.styles.scss';
 
-class SearchBar extends React.Component {
-  constructor() {
-    super();
-
-    this.state = {
-      // location: '',
-      //      searchField: ''
-    };
-  }
-
-  render() {
-    // const { location } = this.state;
-    return (
-      <div className="search-bar">
-        <form className="search-form">
-          <input
-            onChange={(e) => console.log(e.target.value)}
-            className="search-input"
-            type="search"
-            placeholder="City in AU"
-          />
-          <button
-            className="search-button"
-            type="submit"
-            onClick={console.log('readty to call api')}
-          >
-            Search
-          </button>
-        </form>
-      </div>
-    );
-  }
+function SearchBar({
+  searchField,
+  handleSeachFieldChange,
+  handleSubmitClick,
+}) {
+  return (
+    <div className="search-bar">
+      <form className="search-form" onSubmit={handleSubmitClick}>
+        <input
+          value={searchField}
+          className="search-input"
+          type="search"
+          placeholder="City in AU"
+          onChange={(e) => handleSeachFieldChange(e)}
+        />
+        <input
+          className="search-button"
+          type="submit"
+          value="Submit"
+        />
+      </form>
+    </div>
+  );
 }
 
 export default SearchBar;

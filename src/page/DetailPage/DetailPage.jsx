@@ -9,19 +9,22 @@ import HourList from '../../components/HourList';
 
 import './DetailPage.styles.scss';
 
-const DetailPage = () => (
-  <div className="detail-page">
-    <div className="detail-page-header">
-      <GoBack />
-      <Location location="Sydney" />
-      <DarkModeSwitch />
+function DetailPage({
+  onDetailClick,
+}) {
+  return (
+    <div className="detail-page">
+      <div className="detail-page-header">
+        <GoBack onDetailClick={onDetailClick} />
+        <Location location="test" />
+        <DarkModeSwitch />
+      </div>
+      <div className="detail-page-body">
+        <Time />
+        <Detail />
+        <HourList />
+      </div>
     </div>
-    <div className="detail-page-body">
-      <Time />
-      <Detail />
-      <HourList />
-    </div>
-  </div>
-);
-
+  );
+}
 export default DetailPage;
