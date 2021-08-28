@@ -4,11 +4,16 @@ import EachDay from '../EachDay';
 import './SevenDays.styles.scss';
 
 const SevenDays = ({ input }) => {
-  const { temperature, url, week } = input;
-  console.log(111, input);
-  console.log(222, week);
+  console.log(input);
+  // const { temperature, url, week } = input;
+  // console.log(111, input);
+  // console.log(222, week);
   return (
-    <EachDay week={week} url={url} temperature={temperature} />
+    <div className="next-seven-days">
+      {input.map((data) => (
+        <EachDay week={data.week} url={data.url} temperature={data.temperature} />
+      ))}
+    </div>
   );
 };
 

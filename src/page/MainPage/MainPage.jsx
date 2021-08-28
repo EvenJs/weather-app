@@ -20,11 +20,18 @@ class MainPage extends React.Component {
       location: 'Sydney',
       temprature: '22',
       searchField: '',
-      sevenDaysData: {
-        week: 'Wed',
-        url: 'https://image.flaticon.com/icons/png/512/1146/1146869.png',
-        temperature: '22',
-      },
+      sevenDaysData: [
+        {
+          week: 'Wed',
+          url: 'https://image.flaticon.com/icons/png/512/1146/1146869.png',
+          temperature: '22',
+        },
+        {
+          week: 'Wed',
+          url: 'https://image.flaticon.com/icons/png/512/1146/1146869.png',
+          temperature: '22',
+        },
+      ],
     };
 
     this.handleSeachFieldChange = this.handleSeachFieldChange.bind(this);

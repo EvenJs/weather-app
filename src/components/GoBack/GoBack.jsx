@@ -7,7 +7,7 @@ import './GoBack.styles.scss';
 const GoBack = ({
   onDetailClick,
 }) => (
-  <button type="button" onClick={onDetailClick}>
+  <button className="goback" type="button" onClick={onDetailClick}>
     {/* <Logo className="back-logo" /> */}
     <img className="test" src={ChevronLeft} alt="back" />
   </button>

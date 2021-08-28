@@ -1,12 +1,16 @@
-.back-logo {
+.goback {
   width: 30px;
   height: 30px;
   border-radius: 10px;
   position: absolute;
   left: 2%;
   top: 1%;
+  background-color: white;
+  border: none;
+  cursor: pointer;
+
+  .test {
+    width: 100%;
+  }
 }
 
-.test {
-  width: 30px;
-}
