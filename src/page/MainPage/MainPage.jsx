@@ -31,6 +31,31 @@ class MainPage extends React.Component {
           url: 'https://image.flaticon.com/icons/png/512/1146/1146869.png',
           temperature: '22',
         },
+        {
+          week: 'Wed',
+          url: 'https://image.flaticon.com/icons/png/512/1146/1146869.png',
+          temperature: '22',
+        },
+        {
+          week: 'Wed',
+          url: 'https://image.flaticon.com/icons/png/512/1146/1146869.png',
+          temperature: '22',
+        },
+        {
+          week: 'Wed',
+          url: 'https://image.flaticon.com/icons/png/512/1146/1146869.png',
+          temperature: '22',
+        },
+        {
+          week: 'Wed',
+          url: 'https://image.flaticon.com/icons/png/512/1146/1146869.png',
+          temperature: '22',
+        },
+        {
+          week: 'Wed',
+          url: 'https://image.flaticon.com/icons/png/512/1146/1146869.png',
+          temperature: '22',
+        },
       ],
     };
 

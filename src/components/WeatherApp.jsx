@@ -12,8 +12,8 @@ class WeatherApp extends React.Component {
 
     this.state = {
       showDetails: false,
-      searchField: '',
-      location: '',
+      searchField: 'Sydney',
+      location: 'Sydney',
     };
 
     this.handleShowDetail = this.handleShowDetail.bind(this);
@@ -40,7 +40,7 @@ class WeatherApp extends React.Component {
         {!showDeails ? (
           <MainPage onDetailClick={this.handleShowDetail} />
         ) : (
-          <DetailPage onDetailClick={this.handleShowDetail} />
+          <DetailPage onDetailClick={this.handleShowDetail} props={this.state} />
         )}
       </div>
     );

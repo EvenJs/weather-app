@@ -5,9 +5,6 @@ import './SevenDays.styles.scss';
 
 const SevenDays = ({ input }) => {
   console.log(input);
-  // const { temperature, url, week } = input;
-  // console.log(111, input);
-  // console.log(222, week);
   return (
     <div className="next-seven-days">
       {input.map((data) => (

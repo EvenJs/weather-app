@@ -11,12 +11,15 @@ import './DetailPage.styles.scss';
 
 function DetailPage({
   onDetailClick,
+  props,
 }) {
+  console.log(999, props);
+  const { location } = props;
   return (
     <div className="detail-page">
       <div className="detail-page-header">
         <GoBack onDetailClick={onDetailClick} />
-        <Location location="test" />
+        <Location location={location} />
         <DarkModeSwitch />
       </div>
       <div className="detail-page-body">
