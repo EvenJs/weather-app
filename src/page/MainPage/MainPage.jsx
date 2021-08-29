@@ -17,52 +17,12 @@ class MainPage extends React.Component {
     this.state = {
       type: ['sunny'],
       imageUrl: 'https://image.flaticon.com/icons/png/512/1146/1146869.png',
-      location: 'Sydney',
-      temprature: '22',
-      searchField: '',
-      sevenDaysData: [
-        {
-          week: 'Wed',
-          url: 'https://image.flaticon.com/icons/png/512/1146/1146869.png',
-          temperature: '22',
-        },
-        {
-          week: 'Wed',
-          url: 'https://image.flaticon.com/icons/png/512/1146/1146869.png',
-          temperature: '22',
-        },
-        {
-          week: 'Wed',
-          url: 'https://image.flaticon.com/icons/png/512/1146/1146869.png',
-          temperature: '22',
-        },
-        {
-          week: 'Wed',
-          url: 'https://image.flaticon.com/icons/png/512/1146/1146869.png',
-          temperature: '22',
-        },
-        {
-          week: 'Wed',
-          url: 'https://image.flaticon.com/icons/png/512/1146/1146869.png',
-          temperature: '22',
-        },
-        {
-          week: 'Wed',
-          url: 'https://image.flaticon.com/icons/png/512/1146/1146869.png',
-          temperature: '22',
-        },
-        {
-          week: 'Wed',
-          url: 'https://image.flaticon.com/icons/png/512/1146/1146869.png',
-          temperature: '22',
-        },
-      ],
     };
 
-    this.handleSeachFieldChange = this.handleSeachFieldChange.bind(this);
-    this.handleSubmitClick = this.handleSubmitClick.bind(this);
+    // this.handleSeachFieldChange = this.handleSeachFieldChange.bind(this);
+    // this.handleSubmitClick = this.handleSubmitClick.bind(this);
   }
-
+  /*
   handleSeachFieldChange(event) {
     const { value } = event.target;
 
@@ -83,29 +43,31 @@ class MainPage extends React.Component {
       location: prevState.searchField,
     }));
   }
+*/
 
   render() {
+    const { type, imageUrl } = this.state;
     const {
-      type, imageUrl, location, temprature, searchField, sevenDaysData,
-    } = this.state;
-    const { onDetailClick } = this.props;
-
+      props, onDetailClick, handleSeachFieldChange, handleSubmitClick,
+    } = this.props;
+    // const { onDetailClick } = this.props;
+    // console.log(999, this.props);
     return (
       <div className="main-page">
         <div className="main-page-header">
           <SearchBar
-            searchField={searchField}
-            handleSeachFieldChange={this.handleSeachFieldChange}
-            handleSubmitClick={this.handleSubmitClick}
+            searchField={props.searchField}
+            handleSeachFieldChange={handleSeachFieldChange}
+            handleSubmitClick={handleSubmitClick}
           />
           <DarkModeSwitch />
         </div>
         <div className="main-page-body">
-          <Location location={location} />
+          <Location location={props.location} />
           <DisplayDate />
-          <WeatherIcon url={imageUrl} type={type} temprature={temprature} />
+          <WeatherIcon url={imageUrl} type={type} temprature={props.temprature} />
           <MoreInfo onDetailClick={onDetailClick} />
-          <SevenDays input={sevenDaysData} />
+          <SevenDays input={props.sevenDaysData} />
         </div>
       </div>
     );
