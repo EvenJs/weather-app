@@ -3,17 +3,17 @@ import React from 'react';
 import './WeatherBlock.styles.scss';
 
 const getTitle = (type) => ({
-  temperature: 'Temperature',
+  temp_max: 'Temperature Max',
+  temp_min: 'Temperature Min',
   humidity: 'Humidity',
-  windSpeed: 'Wind Speed',
-  windDirection: 'Wind Direction',
+  wind_speed: 'Wind Speed',
 }[type]);
 
 const getPrefix = (type) => ({
-  temperature: '℃',
+  temp_max: '℃',
+  temp_min: '℃',
   humidity: '%',
-  windSpeed: 'kms/h',
-  windDirection: '',
+  wind_speed: 'kms/h',
 }[type]);
 
 const WeatherBlock = ({

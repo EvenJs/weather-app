@@ -28,11 +28,48 @@ class WeatherApp extends React.Component {
           temperature: '22',
         },
       ],
+      dayDetail: [
+        { temp_min: '' },
+        { temp_max: '' },
+        { humidity: '' },
+        { wind: '' },
+      ],
     };
 
     this.handleSeachFieldChange = this.handleSeachFieldChange.bind(this);
     this.handleSubmitClick = this.handleSubmitClick.bind(this);
     this.handleShowDetail = this.handleShowDetail.bind(this);
+  }
+
+  componentDidMount() {
+    fetch('https://api.openweathermap.org/data/2.5/weather?q=sydney&appid=de69afd1f26877e34f47989397ff77a3&units=metric')
+      .then((response) => response.json())
+      .then((result) => {
+        // console.log(222, result.main.temp);
+        this.setState({
+          location: result.name,
+          temperature: result.main.temp,
+          dayDetail: [
+            {
+              type: 'temp_max',
+              value: result.main.temp_max,
+            },
+            {
+              type: 'temp_min',
+              value: result.main.temp_min,
+            },
+            {
+              type: 'humidity',
+              value: result.main.humidity,
+            },
+            {
+              type: 'wind_speed',
+              value: result.wind.speed,
+            },
+          ],
+        });
+      })
+      .catch((err) => { console.log(`Error reading data ${err}`); });
   }
 
   handleShowDetail() {
@@ -67,7 +104,7 @@ class WeatherApp extends React.Component {
 
   render() {
     const { showDeails } = this.state;
-
+    // console.log(333, temperature);
     return (
       <div className="weather-app">
         {/* <Switch>

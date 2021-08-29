@@ -3,12 +3,12 @@ import WeatherBlock from '../WeatherBlock';
 
 import './Detail.styles.scss';
 
-const Detail = () => (
+const Detail = ({ input }) => (
   <div className="detail">
-    <WeatherBlock type="temperature" value="22" />
-    <WeatherBlock type="temperature" value="22" />
-    <WeatherBlock type="temperature" value="22" />
-    <WeatherBlock type="temperature" value="22" />
+    {input.map((data) => (
+    // console.log(548, data.value)
+      <WeatherBlock type={data.type} value={data.value} />
+    ))}
   </div>
 );
 

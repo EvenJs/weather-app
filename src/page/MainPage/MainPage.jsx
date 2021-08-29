@@ -65,7 +65,7 @@ class MainPage extends React.Component {
         <div className="main-page-body">
           <Location location={props.location} />
           <DisplayDate />
-          <WeatherIcon url={imageUrl} type={type} temprature={props.temprature} />
+          <WeatherIcon url={imageUrl} type={type} temprature={props.temperature} />
           <MoreInfo onDetailClick={onDetailClick} />
           <SevenDays input={props.sevenDaysData} />
         </div>
