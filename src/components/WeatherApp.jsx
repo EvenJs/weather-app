@@ -84,9 +84,9 @@ class WeatherApp extends React.Component {
   handleSeachFieldChange(event) {
     const { value } = event.target;
 
-    this.setState((prevState) => (
+    this.setState(() => (
       {
-        ...prevState,
+        // ...prevState,
         searchField: value,
       }
     ));
@@ -98,7 +98,7 @@ class WeatherApp extends React.Component {
 
     this.setState((prevState) => ({
       ...prevState,
-      location: prevState.searchField,
+      location: this.searchField,
     }));
   }
 
