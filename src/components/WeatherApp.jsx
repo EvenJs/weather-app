@@ -1,5 +1,6 @@
 import React from 'react';
 // import { Switch, Route } from 'react-router';
+import axios from 'axios';
 
 import MainPage from '../page/MainPage/MainPage';
 import DetailPage from '../page/DetailPage/DetailPage';
@@ -13,27 +14,7 @@ class WeatherApp extends React.Component {
     this.state = {
       showDetails: false,
       location: 'Sydney',
-      imgageUrl: '',
-      temperature: '',
-      searchField: '',
-      sevenDaysData: [
-        {
-          week: 'Wed',
-          url: 'https://image.flaticon.com/icons/png/512/1146/1146869.png',
-          temperature: '22',
-        },
-        {
-          week: 'Wed',
-          url: 'https://image.flaticon.com/icons/png/512/1146/1146869.png',
-          temperature: '22',
-        },
-      ],
-      dayDetail: [
-        { temp_min: '' },
-        { temp_max: '' },
-        { humidity: '' },
-        { wind: '' },
-      ],
+
     };
 
     this.handleSeachFieldChange = this.handleSeachFieldChange.bind(this);
@@ -42,34 +23,41 @@ class WeatherApp extends React.Component {
   }
 
   componentDidMount() {
-    fetch('https://api.openweathermap.org/data/2.5/weather?q=sydney&appid=de69afd1f26877e34f47989397ff77a3&units=metric')
-      .then((response) => response.json())
+    this.collectCurrentWeatherData();
+    /*
+    const location = 'sydney';
+    // fetch('https://api.openweathermap.org/data/2.5/weather?q=sydney&appid=de69afd1f26877e34f47989397ff77a3&units=metric')
+    axios.get(`http://localhost:9000/api/weather/${location}`)
+    // fetch(`http://localhost:9000/api/weather/${location}`)
+      // .then((res) => console.log(123, res.data.data))
+      .then((response) => response.data.data)
       .then((result) => {
-        // console.log(222, result.main.temp);
+        console.log(222, result.current);
         this.setState({
-          location: result.name,
+          location: result.city.name,
           temperature: result.main.temp,
           dayDetail: [
             {
               type: 'temp_max',
-              value: result.main.temp_max,
+              value: result.current.maxTemp,
             },
             {
               type: 'temp_min',
-              value: result.main.temp_min,
+              value: result.current.minTemp,
             },
             {
               type: 'humidity',
-              value: result.main.humidity,
+              value: result.current.humidity,
             },
             {
               type: 'wind_speed',
-              value: result.wind.speed,
+              value: result.current.windSpeed,
             },
           ],
         });
       })
       .catch((err) => { console.log(`Error reading data ${err}`); });
+      */
   }
 
   handleShowDetail() {
@@ -96,10 +84,46 @@ class WeatherApp extends React.Component {
   handleSubmitClick(event) {
     event.preventDefault();
 
+    fetch(`http://localhost:9000/api/weather/${this.searchField}`)
+      .then((res) => console.log(res));
+
     this.setState((prevState) => ({
       ...prevState,
       location: this.searchField,
     }));
+  }
+
+  collectCurrentWeatherData() {
+    // let weatherData;
+    const { location } = this.state;
+    axios.get(`http://localhost:9000/api/weather/${location}`)
+      .then((response) => response.data.data)
+      .then((result) => {
+        console.log(222, result);
+        this.setState({
+          // location: result.city.name,
+          type: result.current.weather,
+          temperature: result.current.temp,
+          dayDetail: [
+            {
+              type: 'temp_max',
+              value: result.current.maxTemp,
+            },
+            {
+              type: 'temp_min',
+              value: result.current.minTemp,
+            },
+            {
+              type: 'humidity',
+              value: result.current.humidity,
+            },
+            {
+              type: 'wind_speed',
+              value: result.current.windSpeed,
+            },
+          ],
+        });
+      });
   }
 
   render() {
@@ -114,9 +138,9 @@ class WeatherApp extends React.Component {
         {!showDeails ? (
           <MainPage
             onDetailClick={this.handleShowDetail}
-            props={this.state}
             handleSeachFieldChange={this.handleSeachFieldChange}
             handleSubmitClick={this.handleSubmitClick}
+            props={this.state}
           />
         ) : (
           <DetailPage onDetailClick={this.handleShowDetail} props={this.state} />

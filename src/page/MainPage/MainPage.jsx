@@ -6,7 +6,7 @@ import Location from '../../components/Location';
 import DisplayDate from '../../components/DisplayDate';
 import WeatherIcon from '../../components/WeatherIcon';
 import MoreInfo from '../../components/MoreInfo';
-import SevenDays from '../../components/NextSevenDays';
+// import SevenDays from '../../components/NextSevenDays';
 
 import './MainPage.styles.scss';
 
@@ -15,7 +15,7 @@ class MainPage extends React.Component {
     super(props);
 
     this.state = {
-      type: ['sunny'],
+      // type: ['sunny'],
       imageUrl: 'https://image.flaticon.com/icons/png/512/1146/1146869.png',
     };
 
@@ -46,7 +46,7 @@ class MainPage extends React.Component {
 */
 
   render() {
-    const { type, imageUrl } = this.state;
+    const { imageUrl } = this.state;
     const {
       props, onDetailClick, handleSeachFieldChange, handleSubmitClick,
     } = this.props;
@@ -65,9 +65,9 @@ class MainPage extends React.Component {
         <div className="main-page-body">
           <Location location={props.location} />
           <DisplayDate />
-          <WeatherIcon url={imageUrl} type={type} temprature={props.temperature} />
+          <WeatherIcon url={imageUrl} type={props.type} temprature={props.temperature} />
           <MoreInfo onDetailClick={onDetailClick} />
-          <SevenDays input={props.sevenDaysData} />
+
         </div>
       </div>
     );
