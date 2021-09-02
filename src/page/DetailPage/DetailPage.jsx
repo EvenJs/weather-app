@@ -24,7 +24,7 @@ function DetailPage({
       </div>
       <div className="detail-page-body">
         <Time />
-        <Detail input={props.dayDetail} />
+        <Detail input={props.detail.current.detail} />
         <HourList />
       </div>
     </div>
