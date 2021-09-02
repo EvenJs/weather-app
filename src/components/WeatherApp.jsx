@@ -1,17 +1,19 @@
 import React from 'react';
 // import { Switch, Route } from 'react-router';
-import axios from 'axios';
+// import axios from 'axios';
 
 import MainPage from '../page/MainPage/MainPage';
 import DetailPage from '../page/DetailPage/DetailPage';
-
 import './WeatherApp.styles.scss';
+
+const axios = require('axios');
 
 class WeatherApp extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
+      isLodaing: true,
       showDetails: false,
       location: 'Sydney',
       data: ' ',
@@ -28,7 +30,12 @@ class WeatherApp extends React.Component {
       .then((res) => {
         res.json()
           .then((data) => {
-            this.setState({ detail: data.data });
+            console.log(data);
+            this.setState({
+              isLodaing: false,
+              location: data.data.city.name,
+              detail: data.data,
+            });
           });
       })
       .catch((error) => error);
@@ -143,26 +150,27 @@ class WeatherApp extends React.Component {
   }
 
   render() {
-    const { showDeails, detail } = this.state;
-    console.log(123, detail);
+    const { showDeails, isLodaing } = this.state;
+    // console.log(123, detail);
     // console.log(333, temperature);
     return (
-      <div className="weather-app">
-        {/* <Switch>
-          <Route exact path="/" component={<MainPage />} />
-          <Route path="/details" component={<DetailPage />} />
-        </Switch> */}
-        {!showDeails ? (
-          <MainPage
-            onDetailClick={this.handleShowDetail}
-            handleSeachFieldChange={this.handleSeachFieldChange}
-            handleSubmitClick={this.handleSubmitClick}
-            props={this.state}
-          />
+      isLodaing
+        ? (
+          <div> Lodaing  </div>
         ) : (
-          <DetailPage onDetailClick={this.handleShowDetail} props={this.state} />
-        )}
-      </div>
+          <div className="weather-app">
+            {!showDeails ? (
+              <MainPage
+                onDetailClick={this.handleShowDetail}
+                handleSeachFieldChange={this.handleSeachFieldChange}
+                handleSubmitClick={this.handleSubmitClick}
+                props={this.state}
+              />
+            ) : (
+              <DetailPage onDetailClick={this.handleShowDetail} props={this.state} />
+            )}
+          </div>
+        )
     );
   }
 }

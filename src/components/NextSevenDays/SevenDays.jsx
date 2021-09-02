@@ -8,7 +8,12 @@ const SevenDays = ({ input }) => {
   return (
     <div className="next-seven-days">
       {input.map((data) => (
-        <EachDay week={data.week} url={data.url} temperature={data.temperature} />
+        <EachDay
+          week={data.time}
+          url={data.url}
+          weather={data.weather}
+          temperature={data.temperature}
+        />
       ))}
     </div>
   );

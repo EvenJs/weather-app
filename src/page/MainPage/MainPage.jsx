@@ -6,7 +6,7 @@ import Location from '../../components/Location';
 import DisplayDate from '../../components/DisplayDate';
 import WeatherIcon from '../../components/WeatherIcon';
 import MoreInfo from '../../components/MoreInfo';
-// import SevenDays from '../../components/NextSevenDays';
+import SevenDays from '../../components/NextSevenDays';
 
 import './MainPage.styles.scss';
 
@@ -25,7 +25,8 @@ class MainPage extends React.Component {
     const {
       props, onDetailClick, handleSeachFieldChange, handleSubmitClick,
     } = this.props;
-    console.log(66, props.daily);
+    // const { city, current } = detail;
+    console.log(66, props.detail);
     // const { onDetailClick } = this.props;
     // console.log(999, this.props);
     return (
@@ -41,9 +42,13 @@ class MainPage extends React.Component {
         <div className="main-page-body">
           <Location location={props.location} />
           <DisplayDate />
-          <WeatherIcon url={imageUrl} type={props.type} temprature={props.temperature} />
+          <WeatherIcon
+            url={imageUrl}
+            type={props.detail.current.weather}
+            temprature={props.detail.current.temp}
+          />
           <MoreInfo onDetailClick={onDetailClick} />
-
+          <SevenDays input={props.detail.daily} />
         </div>
       </div>
     );
