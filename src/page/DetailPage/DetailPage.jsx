@@ -13,7 +13,7 @@ function DetailPage({
   onDetailClick,
   props,
 }) {
-  console.log(999, props.dayDetail);
+  console.log(999, props);
   const { location } = props;
   return (
     <div className="detail-page">

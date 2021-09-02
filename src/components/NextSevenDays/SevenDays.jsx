@@ -3,13 +3,16 @@ import React from 'react';
 import EachDay from '../EachDay';
 import './SevenDays.styles.scss';
 
-const SevenDays = ({ input }) => (
-  <div className="next-seven-days">
-    {input.map((data) => (
-      <EachDay week={data.week} url={data.url} temperature={data.temperature} />
-    ))}
-  </div>
-);
+const SevenDays = ({ input }) => {
+  console.log(444, input);
+  return (
+    <div className="next-seven-days">
+      {input.map((data) => (
+        <EachDay week={data.week} url={data.url} temperature={data.temperature} />
+      ))}
+    </div>
+  );
+};
 
 /*
     const SevenDays = ({sevenDaysData}) => (

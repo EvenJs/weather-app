@@ -14,7 +14,7 @@ class WeatherApp extends React.Component {
     this.state = {
       showDetails: false,
       location: 'Sydney',
-
+      data: ' ',
     };
 
     this.handleSeachFieldChange = this.handleSeachFieldChange.bind(this);
@@ -23,7 +23,16 @@ class WeatherApp extends React.Component {
   }
 
   componentDidMount() {
-    this.collectCurrentWeatherData();
+    const { location } = this.state;
+    fetch(`http://localhost:9000/api/weather/${location}`)
+      .then((res) => {
+        res.json()
+          .then((data) => {
+            this.setState({ detail: data.data });
+          });
+      })
+      .catch((error) => error);
+    // this.collectCurrentWeatherData();
     /*
     const location = 'sydney';
     // fetch('https://api.openweathermap.org/data/2.5/weather?q=sydney&appid=de69afd1f26877e34f47989397ff77a3&units=metric')
@@ -83,14 +92,19 @@ class WeatherApp extends React.Component {
 
   handleSubmitClick(event) {
     event.preventDefault();
-
-    fetch(`http://localhost:9000/api/weather/${this.searchField}`)
-      .then((res) => console.log(res));
-
     this.setState((prevState) => ({
       ...prevState,
       location: this.searchField,
     }));
+    // this.collectCurrentWeatherData();
+
+    axios.get('http://localhost:9000/api/weather/london')
+      .then((res) => console.log(123, res.data.data))
+      .then((result) => {
+        this.setState({
+          location: result.city.name,
+        });
+      });
   }
 
   collectCurrentWeatherData() {
@@ -101,8 +115,9 @@ class WeatherApp extends React.Component {
       .then((result) => {
         console.log(222, result);
         this.setState({
-          // location: result.city.name,
-          type: result.current.weather,
+          // data: result,
+          location: result.city.name,
+          type: result.current.weather[0].main,
           temperature: result.current.temp,
           dayDetail: [
             {
@@ -122,12 +137,14 @@ class WeatherApp extends React.Component {
               value: result.current.windSpeed,
             },
           ],
+          daily: result.daily,
         });
       });
   }
 
   render() {
-    const { showDeails } = this.state;
+    const { showDeails, detail } = this.state;
+    console.log(123, detail);
     // console.log(333, temperature);
     return (
       <div className="weather-app">

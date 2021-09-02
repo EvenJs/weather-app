@@ -18,38 +18,14 @@ class MainPage extends React.Component {
       // type: ['sunny'],
       imageUrl: 'https://image.flaticon.com/icons/png/512/1146/1146869.png',
     };
-
-    // this.handleSeachFieldChange = this.handleSeachFieldChange.bind(this);
-    // this.handleSubmitClick = this.handleSubmitClick.bind(this);
   }
-  /*
-  handleSeachFieldChange(event) {
-    const { value } = event.target;
-
-    this.setState((prevState) => (
-      {
-        ...prevState,
-        searchField: value,
-      }
-    ));
-    // console.log(1 {location});
-  }
-
-  handleSubmitClick(event) {
-    event.preventDefault();
-
-    this.setState((prevState) => ({
-      ...prevState,
-      location: prevState.searchField,
-    }));
-  }
-*/
 
   render() {
     const { imageUrl } = this.state;
     const {
       props, onDetailClick, handleSeachFieldChange, handleSubmitClick,
     } = this.props;
+    console.log(66, props.daily);
     // const { onDetailClick } = this.props;
     // console.log(999, this.props);
     return (
@@ -74,15 +50,4 @@ class MainPage extends React.Component {
   }
 }
 
-/*
-const MainPage = () => (
-  <div className="main-page">
-    <SearchBar />
-    <Time />
-    <Weather />
-    <MoreInfo />
-    <SevenDays />
-  </div>
-);
-*/
 export default MainPage;
