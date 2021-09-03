@@ -29,7 +29,7 @@ class MainPage extends React.Component {
     // console.log(66, props.detail);
     // const { onDetailClick } = this.props;
     // console.log(999, this.props);
-    console.log(props.detail.current.weatheIcon);
+    console.log(props.detail);
     return (
       <div className="main-page">
         <div className="main-page-header">
@@ -50,7 +50,11 @@ class MainPage extends React.Component {
             temprature={props.detail.current.temp}
           />
           <MoreInfo onDetailClick={onDetailClick} />
-          <SevenDays input={props.detail.daily} timeShift={props.detail.time.timeShift} />
+          <SevenDays
+            input={props.detail.daily}
+            baseURL={imageUrl}
+            timeShift={props.detail.time.timeShift}
+          />
         </div>
       </div>
     );
