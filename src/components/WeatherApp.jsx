@@ -1,12 +1,12 @@
 import React from 'react';
 // import { Switch, Route } from 'react-router';
-// import axios from 'axios';
+import axios from 'axios';
 
 import MainPage from '../page/MainPage/MainPage';
 import DetailPage from '../page/DetailPage/DetailPage';
 import './WeatherApp.styles.scss';
 
-const axios = require('axios');
+// const axios = require('axios');
 
 class WeatherApp extends React.Component {
   constructor(props) {
@@ -30,7 +30,7 @@ class WeatherApp extends React.Component {
       .then((res) => {
         res.json()
           .then((data) => {
-            console.log(data);
+            // console.log(999, data);
             this.setState({
               isLodaing: false,
               location: data.data.city.name,
@@ -97,21 +97,37 @@ class WeatherApp extends React.Component {
     // console.log(1 {location});
   }
 
-  handleSubmitClick(event) {
+  async handleSubmitClick(event) {
     event.preventDefault();
     this.setState((prevState) => ({
       ...prevState,
       location: this.searchField,
     }));
     // this.collectCurrentWeatherData();
+    const { searchField } = this.state;
+    await fetch(`http://localhost:9000/api/weather/${searchField}`)
+      .then((res) => {
+        res.json()
+          .then((data) => {
+            console.log(1, data.data);
+            this.setState({
+              isLodaing: false,
+              location: data.data.city.name,
+              detail: data.data,
+            });
+          });
+      })
+      .catch((error) => error);
 
-    axios.get('http://localhost:9000/api/weather/london')
-      .then((res) => console.log(123, res.data.data))
-      .then((result) => {
+    /*
+      .then((res) => console.log(123, res))
+      .then((data) => {
         this.setState({
-          location: result.city.name,
+          location: data.data.city.name,
+          detail: data.data,
         });
       });
+      */
   }
 
   collectCurrentWeatherData() {
@@ -120,7 +136,7 @@ class WeatherApp extends React.Component {
     axios.get(`http://localhost:9000/api/weather/${location}`)
       .then((response) => response.data.data)
       .then((result) => {
-        console.log(222, result);
+        // console.log(222, result);
         this.setState({
           // data: result,
           location: result.city.name,

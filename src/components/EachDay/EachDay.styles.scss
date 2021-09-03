@@ -1,10 +1,12 @@
 .eachday-wrapper {
   margin-top: 5%;
-  width: 50xp;
+  width: 50px;
   border: solid 1px black;
   display: flex;
   flex-direction: column;
+  justify-content: space-evenly;
   margin:0 1%;
+  
   .eachday-week {
     text-align: center;
     font-family: 'Anton', sans-serif;

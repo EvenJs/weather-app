@@ -26,7 +26,7 @@ class MainPage extends React.Component {
       props, onDetailClick, handleSeachFieldChange, handleSubmitClick,
     } = this.props;
     // const { city, current } = detail;
-    console.log(66, props.detail);
+    // console.log(66, props.detail);
     // const { onDetailClick } = this.props;
     // console.log(999, this.props);
     return (
