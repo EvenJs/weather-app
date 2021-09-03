@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "./static/css/main.93247f2a.chunk.css",
+    "main.js": "./static/js/main.92fb5308.chunk.js",
+    "main.js.map": "./static/js/main.92fb5308.chunk.js.map",
+    "runtime-main.js": "./static/js/runtime-main.3b17bfb5.js",
+    "runtime-main.js.map": "./static/js/runtime-main.3b17bfb5.js.map",
+    "static/js/2.c4963895.chunk.js": "./static/js/2.c4963895.chunk.js",
+    "static/js/2.c4963895.chunk.js.map": "./static/js/2.c4963895.chunk.js.map",
+    "static/js/3.cb01b84f.chunk.js": "./static/js/3.cb01b84f.chunk.js",
+    "static/js/3.cb01b84f.chunk.js.map": "./static/js/3.cb01b84f.chunk.js.map",
+    "index.html": "./index.html",
+    "static/css/main.93247f2a.chunk.css.map": "./static/css/main.93247f2a.chunk.css.map",
+    "static/js/2.c4963895.chunk.js.LICENSE.txt": "./static/js/2.c4963895.chunk.js.LICENSE.txt",
+    "static/media/WeatherApp.styles.scss": "./static/media/background2.b66b27c0.jpg",
+    "static/media/chevron-left-solid.310de47d.svg": "./static/media/chevron-left-solid.310de47d.svg",
+    "static/media/map-marker-alt-solid.d9fe5579.svg": "./static/media/map-marker-alt-solid.d9fe5579.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.3b17bfb5.js",
+    "static/js/2.c4963895.chunk.js",
+    "static/css/main.93247f2a.chunk.css",
+    "static/js/main.92fb5308.chunk.js"
+  ]
+}
