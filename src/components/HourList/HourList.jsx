@@ -3,16 +3,14 @@ import EachHour from '../EachHour';
 
 import './HourList.styles.scss';
 
-const WeatherInHour = () => (
+const WeatherInHour = ({ input }) => (
   <div className="wrapper">
-    <EachHour hour="18:00" temperature="20" />
-    <EachHour />
-    <EachHour />
-    <EachHour />
-    <EachHour />
-    <EachHour />
-    <EachHour />
-    <EachHour />
+    {
+      input.map((data) => (
+        <EachHour hour={data.date} temperature={data.temperature} />
+      ))
+    }
+
   </div>
 );
 

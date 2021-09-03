@@ -13,7 +13,7 @@ function DetailPage({
   onDetailClick,
   props,
 }) {
-  // console.log(999, props);
+  console.log(999, props);
   const { location, timeOfLocation } = props;
   return (
     <div className="detail-page">
@@ -25,7 +25,7 @@ function DetailPage({
       <div className="detail-page-body">
         <Time props={timeOfLocation} />
         <Detail input={props.detail.current.detail} />
-        <HourList />
+        <HourList input={props.detail.hourly} />
       </div>
     </div>
   );
