@@ -6,10 +6,12 @@ import './WeatherIcon.styles.scss';
 //   id/type: ->url, imageSrouce
 // })
 
-const WeatherIcon = ({ url, type, temprature }) => (
+const WeatherIcon = ({
+  baseURL, weatherIcon, type, temprature,
+}) => (
   <div>
     <div className="weather-wrapper">
-      <img className="weather-icon" src={url} alt="weather icon" />
+      <img className="weather-icon" src={`${baseURL}${weatherIcon}@2x.png`} alt="weather icon" />
       <h3 className="weather-type">{type}</h3>
     </div>
     <div className="weather-temprature">

@@ -1,12 +1,8 @@
 import React from 'react';
-// import { Switch, Route } from 'react-router';
-import axios from 'axios';
 
 import MainPage from '../page/MainPage/MainPage';
 import DetailPage from '../page/DetailPage/DetailPage';
 import './WeatherApp.styles.scss';
-
-// const axios = require('axios');
 
 class WeatherApp extends React.Component {
   constructor(props) {
@@ -15,6 +11,7 @@ class WeatherApp extends React.Component {
     this.state = {
       isLodaing: true,
       showDetails: false,
+      // weatherIconUrl: `https://openweathermap.org/img/wn/${input}@2x.png`,
       location: 'Sydney',
       data: ' ',
     };
@@ -33,6 +30,7 @@ class WeatherApp extends React.Component {
             // console.log(999, data.data);
             this.setState({
               isLodaing: false,
+              input: '',
               location: data.data.city.name,
               detail: data.data,
               timeOfLocation: data.data.current.time * 1000 + data.data.time.timeShift,
@@ -129,41 +127,6 @@ class WeatherApp extends React.Component {
         });
       });
       */
-  }
-
-  collectCurrentWeatherData() {
-    // let weatherData;
-    const { location } = this.state;
-    axios.get(`http://localhost:9000/api/weather/${location}`)
-      .then((response) => response.data.data)
-      .then((result) => {
-        // console.log(222, result);
-        this.setState({
-          // data: result,
-          location: result.city.name,
-          type: result.current.weather[0].main,
-          temperature: result.current.temp,
-          dayDetail: [
-            {
-              type: 'temp_max',
-              value: result.current.maxTemp,
-            },
-            {
-              type: 'temp_min',
-              value: result.current.minTemp,
-            },
-            {
-              type: 'humidity',
-              value: result.current.humidity,
-            },
-            {
-              type: 'wind_speed',
-              value: result.current.windSpeed,
-            },
-          ],
-          daily: result.daily,
-        });
-      });
   }
 
   render() {

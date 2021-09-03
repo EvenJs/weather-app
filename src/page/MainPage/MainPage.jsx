@@ -16,7 +16,7 @@ class MainPage extends React.Component {
 
     this.state = {
       // type: ['sunny'],
-      imageUrl: 'https://image.flaticon.com/icons/png/512/1146/1146869.png',
+      imageUrl: 'http://openweathermap.org/img/wn/',
     };
   }
 
@@ -29,6 +29,7 @@ class MainPage extends React.Component {
     // console.log(66, props.detail);
     // const { onDetailClick } = this.props;
     // console.log(999, this.props);
+    console.log(props.detail.current.weatheIcon);
     return (
       <div className="main-page">
         <div className="main-page-header">
@@ -43,12 +44,13 @@ class MainPage extends React.Component {
           <Location location={props.location} />
           <DisplayDate input={props.detail.current.time} timeShift={props.detail.time.timeShift} />
           <WeatherIcon
-            url={imageUrl}
+            baseURL={imageUrl}
+            weatherIcon={props.detail.current.weatheIcon}
             type={props.detail.current.weather}
             temprature={props.detail.current.temp}
           />
           <MoreInfo onDetailClick={onDetailClick} />
-          <SevenDays input={props.detail.daily} />
+          <SevenDays input={props.detail.daily} timeShift={props.detail.time.timeShift} />
         </div>
       </div>
     );
