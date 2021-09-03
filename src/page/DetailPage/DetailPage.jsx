@@ -14,7 +14,7 @@ function DetailPage({
   props,
 }) {
   console.log(999, props);
-  const { location } = props;
+  const { location, timeOfLocation } = props;
   return (
     <div className="detail-page">
       <div className="detail-page-header">
@@ -23,7 +23,7 @@ function DetailPage({
         <DarkModeSwitch />
       </div>
       <div className="detail-page-body">
-        <Time />
+        <Time props={timeOfLocation} />
         <Detail input={props.detail.current.detail} />
         <HourList />
       </div>

@@ -41,7 +41,7 @@ class MainPage extends React.Component {
         </div>
         <div className="main-page-body">
           <Location location={props.location} />
-          <DisplayDate />
+          <DisplayDate input={props.detail.current.time} timeShift={props.detail.time.timeShift} />
           <WeatherIcon
             url={imageUrl}
             type={props.detail.current.weather}

@@ -30,11 +30,12 @@ class WeatherApp extends React.Component {
       .then((res) => {
         res.json()
           .then((data) => {
-            // console.log(999, data);
+            // console.log(999, data.data);
             this.setState({
               isLodaing: false,
               location: data.data.city.name,
               detail: data.data,
+              timeOfLocation: data.data.current.time * 1000 + data.data.time.timeShift,
             });
           });
       })

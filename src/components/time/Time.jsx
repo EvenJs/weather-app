@@ -3,11 +3,10 @@ import React from 'react';
 import './Time.styles.scss';
 
 class Time extends React.Component {
-  constructor() {
-    super();
-
+  constructor(props) {
+    super(props);
     this.state = {
-      time: new Date(),
+      time: new Date(props),
     };
   }
 
