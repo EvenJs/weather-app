@@ -1,5 +1,5 @@
 import React from 'react';
-
+import axios from 'axios';
 import MainPage from '../page/MainPage/MainPage';
 import DetailPage from '../page/DetailPage/DetailPage';
 import './WeatherApp.styles.scss';
@@ -14,6 +14,7 @@ class WeatherApp extends React.Component {
       // weatherIconUrl: `https://openweathermap.org/img/wn/${input}@2x.png`,
       location: 'Sydney',
       data: ' ',
+      searchField: '',
     };
 
     this.handleSeachFieldChange = this.handleSeachFieldChange.bind(this);
@@ -23,7 +24,7 @@ class WeatherApp extends React.Component {
 
   componentDidMount() {
     const { location } = this.state;
-    fetch(`http://localhost:9000/api/weather/${location}`)
+    fetch(`https://jr-weather-app-server.herokuapp.com/api/weather/${location}`)
       .then((res) => {
         res.json()
           .then((data) => {
@@ -38,41 +39,6 @@ class WeatherApp extends React.Component {
           });
       })
       .catch((error) => error);
-    // this.collectCurrentWeatherData();
-    /*
-    const location = 'sydney';
-    // fetch('https://api.openweathermap.org/data/2.5/weather?q=sydney&appid=de69afd1f26877e34f47989397ff77a3&units=metric')
-    axios.get(`http://localhost:9000/api/weather/${location}`)
-    // fetch(`http://localhost:9000/api/weather/${location}`)
-      // .then((res) => console.log(123, res.data.data))
-      .then((response) => response.data.data)
-      .then((result) => {
-        console.log(222, result.current);
-        this.setState({
-          location: result.city.name,
-          temperature: result.main.temp,
-          dayDetail: [
-            {
-              type: 'temp_max',
-              value: result.current.maxTemp,
-            },
-            {
-              type: 'temp_min',
-              value: result.current.minTemp,
-            },
-            {
-              type: 'humidity',
-              value: result.current.humidity,
-            },
-            {
-              type: 'wind_speed',
-              value: result.current.windSpeed,
-            },
-          ],
-        });
-      })
-      .catch((err) => { console.log(`Error reading data ${err}`); });
-      */
   }
 
   handleShowDetail() {
@@ -86,7 +52,6 @@ class WeatherApp extends React.Component {
 
   handleSeachFieldChange(event) {
     const { value } = event.target;
-
     this.setState(() => (
       {
         // ...prevState,
@@ -96,37 +61,35 @@ class WeatherApp extends React.Component {
     // console.log(1 {location});
   }
 
-  async handleSubmitClick(event) {
+  handleSubmitClick(event) {
+    // console.log(888, event);
     event.preventDefault();
-    this.setState((prevState) => ({
-      ...prevState,
-      location: this.searchField,
-    }));
+
     // this.collectCurrentWeatherData();
     const { searchField } = this.state;
-    await fetch(`http://localhost:9000/api/weather/${searchField}`)
-      .then((res) => {
-        res.json()
-          .then((data) => {
-            console.log(1, data.data);
-            this.setState({
-              isLodaing: false,
-              location: data.data.city.name,
-              detail: data.data,
-            });
-          });
-      })
-      .catch((error) => error);
 
-    /*
-      .then((res) => console.log(123, res))
-      .then((data) => {
+    // fail fast
+    if (!searchField) {
+      alert('please input the city');
+      return false;
+    }
+
+    this.setState({
+      location: this.searchField,
+    });
+
+    return axios
+      .get(`https://jr-weather-app-server.herokuapp.com/api/weather/${searchField}`)
+      .then((response) => {
+        const { data } = response;
+
         this.setState({
+          isLodaing: false,
           location: data.data.city.name,
           detail: data.data,
         });
-      });
-      */
+      })
+      .catch((error) => console.warn(error));
   }
 
   render() {

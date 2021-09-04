@@ -5,17 +5,25 @@ import './Time.styles.scss';
 class Time extends React.Component {
   constructor(props) {
     super(props);
+
+    const { props: timeOfLocation } = props;
     this.state = {
-      time: new Date(props),
+      time: new Date(timeOfLocation),
     };
   }
 
-  getTime() {
-    setInterval(() => {
-      this.setState({
-        time: new Date(),
-      });
-    }, 1000);
+  // eslint-disable-next-line react/sort-comp
+
+  componentDidMount() {
+    const getTime = () => {
+      setInterval(() => {
+        this.setState({
+          time: new Date(),
+        });
+      }, 1000);
+    };
+
+    getTime();
   }
 
   render() {
@@ -24,8 +32,7 @@ class Time extends React.Component {
     return (
       <div className="time-wrapper">
         <span className="time">
-          { time.toLocaleTimeString() }
-          {this.getTime()}
+          {time.toLocaleTimeString()}
         </span>
       </div>
     );
