@@ -15,6 +15,7 @@ function DetailPage({
 }) {
   console.log(999, props);
   const { location, timeOfLocation } = props;
+
   return (
     <div className="detail-page">
       <div className="detail-page-header">
@@ -30,4 +31,5 @@ function DetailPage({
     </div>
   );
 }
+
 export default DetailPage;

@@ -15,7 +15,6 @@ class MainPage extends React.Component {
     super(props);
 
     this.state = {
-      // type: ['sunny'],
       imageUrl: 'http://openweathermap.org/img/wn/',
     };
   }
@@ -25,11 +24,8 @@ class MainPage extends React.Component {
     const {
       props, onDetailClick, handleSeachFieldChange, handleSubmitClick,
     } = this.props;
-    // const { city, current } = detail;
-    // console.log(66, props.detail);
-    // const { onDetailClick } = this.props;
     // console.log(999, this.props);
-    console.log(props.detail);
+    // console.log(props.detail);
     return (
       <div className="main-page">
         <div className="main-page-header">
